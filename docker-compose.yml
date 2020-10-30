@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.postgres
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env/.env
+    networks:
+      net_estoque:
+        ipv4_address: 172.16.0.2
+
+  pgAdmin4:
+    container_name: pgAdmin4
+    image: dpage/pgadmin4
+    env_file:
+      - ./.env/.env
+    depends_on:
+      - postgres
+    ports:
+      - 8091:80
+    networks:
+      net_estoque:
+        ipv4_address: 172.16.0.3
+
+  estoque:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.estoque
+    env_file:
+      - ./.env/.env
+    volumes:
+      - ./.env:/opt/estoque/.env/
+      - ./docker/resources/estoque/setup.docker.py:/opt/app/setup.docker.py
+      - ./docker/resources/estoque/wait_for_it_postgres.py:/opt/app/wait_for_it_postgres.py
+      - ./estoque:/opt/app/estoque/
+    ports:
+      - "8090:8090"
+    depends_on:
+      - pgAdmin4
+      - postgres
+    networks:
+      net_estoque:
+        ipv4_address: 172.16.0.4
+
+networks:
+  net_estoque:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24

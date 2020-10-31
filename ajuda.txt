@@ -23,6 +23,7 @@ https://www.treinaweb.com.br/blog/relacionamento-1-1-1-n-e-n-n-com-django/
 
 
 
+
 ############################################################################################################
 O django-admin ou manage.py já tem um bocado de comandos interessantes, os mais utilizados são:
 
@@ -37,3 +38,19 @@ shell - inicializa um interpretador Python interativo.
 dbshell - acessa o banco de dados através da linha de comando, ou seja, você pode executar comandos sql do banco, por exemplo, diretamente no terminal.
 inspectdb - retorna todos os modelos Django que geraram as tabelas do banco de dados.
 runserver - roda o servidor local do projeto Django.
+############################################################################################################
+
+
+comandos:
+cria projeto django
+django-admin startproject mysite
+
+executa servidor
+python manage.py runserver
+
+cria app, que é um diretório que contem seus arquivos, models.py, views.py, urls.py e outros
+python manage.py startapp criaApp
+
+python manage.py makemigrations
+
+python manage.py migrate

@@ -41,6 +41,13 @@ INSTALLED_APPS = [
     'preco'
 ]
 
+# 'catalogo.app.CatalogoConfig',
+# 'preco.app.PrecoConfig'
+# lote.app.LoteConfig
+# fornecedor.app.FornecedoConfig
+# log.app.Log
+# produtos_fornecedores.app.Produtos_fornecedores
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

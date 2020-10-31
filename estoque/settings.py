@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalogo',
     'preco',
-    'log'
+    'log',
+    'lote'
 ]
 
 # 'catalogo.app.CatalogoConfig',

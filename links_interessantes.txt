@@ -1,0 +1,39 @@
+arquitetura(pastas/diretorios) do django
+https://www.treinaweb.com.br/blog/entendendo-o-mtv-do-django/
+
+explicação de como o django funciona
+https://medium.com/horadecodar/como-o-django-funciona-459184571a72
+
+curso de django (grandinho)
+https://www.youtube.com/playlist?list=PLvS2JoIlSA4BqUC40v-4hOzzzmwFyb4J2
+
+Criando novos comandos no django-admin
+http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html
+
+
+
+comando docker para abrir o terminal do container
+docker exec -i -t id-container /bin/bash
+
+Escrevendo seu primeiro app Django,
+https://docs.djangoproject.com/pt-br/3.1/intro/tutorial01/
+
+Relacionamentos
+https://www.treinaweb.com.br/blog/relacionamento-1-1-1-n-e-n-n-com-django/
+
+
+
+############################################################################################################
+O django-admin ou manage.py já tem um bocado de comandos interessantes, os mais utilizados são:
+
+startproject - cria novos projetos.
+startapp - cria novas apps.
+makemigrations - cria novas migrações baseadas nas mudanças detectadas nos modelos Django.
+migrate - sincroniza o banco de dados com as novas migrações.
+createsuperuser - cria novos usuários.
+test - roda os testes da aplicação.
+loaddata - carrega dados iniciais a partir de um json, por exemplo, python manage.py loaddata fixtures.json
+shell - inicializa um interpretador Python interativo.
+dbshell - acessa o banco de dados através da linha de comando, ou seja, você pode executar comandos sql do banco, por exemplo, diretamente no terminal.
+inspectdb - retorna todos os modelos Django que geraram as tabelas do banco de dados.
+runserver - roda o servidor local do projeto Django.

@@ -8,10 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        <h2>voce tem certeza que deseja remover o lote: {{ lote.id }} ?</h2>
-        <button type="submit">Confirmar</button>
-    </form>
+<form method="post">
+    {% csrf_token %}
+    <h2>voce tem certeza que deseja remover o lote: {{ lote.id }} ?</h2>
+    <button type="submit">Confirmar</button>
+</form>
 </body>
 </html>

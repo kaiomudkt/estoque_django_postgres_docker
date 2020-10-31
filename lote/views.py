@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Lote
+
 from .forms import FormularioLote
+from .models import Lote
+
 
 def lista_lotes(request):
     lotes = Lote.objects.all()

@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import atualiza_produto, deletar_produto, lista_produtos, cadastra_produto
 
 urlpatterns = [

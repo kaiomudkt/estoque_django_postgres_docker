@@ -9,19 +9,19 @@
 </head>
 <body>
 
-    <!-- https://github.com/Gpzim98/django2-CRUD-30min/blob/master/products/templates/products-form.html -->
-    <h1>New/Update produto</h1>
+<!-- https://github.com/Gpzim98/django2-CRUD-30min/blob/master/products/templates/products-form.html -->
+<h1>New/Update/Delete produto</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ formulario_preco }}
-        {{ formulario_produto }}
-        <button type="submit">Salvar</button>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+    {{ formulario_preco }}
+    {{ formulario_produto }}
+    <button type="submit">Salvar</button>
+</form>
 
 
-    {% if formulario_produto %}
-        <a href="{% url 'deletar_produto' produto.id %}">Deletar</a>
-    {% endif %}
+{% if produto %}
+<a href="{% url 'deletar_produto' produto.id %}">Deletar</a>
+{% endif %}
 </body>
 </html>

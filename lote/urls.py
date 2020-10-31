@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import atualiza_lote, deletar_lote, lista_lotes, cadastra_lote
 
 urlpatterns = [

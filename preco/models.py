@@ -1,5 +1,7 @@
 from django.db import models
-#from catalogo.models import Catalogo
+
+
+# from catalogo.models import Catalogo
 
 
 class Preco(models.Model):

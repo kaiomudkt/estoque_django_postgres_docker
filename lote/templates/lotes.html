@@ -9,17 +9,17 @@
 </head>
 <body>
 
-    <div>
-        lotes
-    </div>
-    <ul>
-        {% for lote in lotes %}
-            <a href="{% url 'atualiza_lote' lote.id %}">
-                <li> {{ lote.id }}</li>
-            </a>
-        {% endfor %}
-    </ul>
+<div>
+    lotes
+</div>
+<ul>
+    {% for lote in lotes %}
+    <a href="{% url 'atualiza_lote' lote.id %}">
+        <li> {{ lote.id }}</li>
+    </a>
+    {% endfor %}
+</ul>
 
-    <a href="{% url 'cadastra_lote' %}">Novo lote</a>
+<a href="{% url 'cadastra_lote' %}">Novo lote</a>
 </body>
 </html>

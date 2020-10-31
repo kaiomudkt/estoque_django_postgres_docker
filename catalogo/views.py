@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Catalogo
+
 from .forms import FormularioProduto, FormularioPreco
+from .models import Catalogo
+
 
 def lista_produtos(request):
     catalogo = Catalogo.objects.all()
@@ -22,7 +24,8 @@ def cadastra_produto(request):
         formulario_produto = FormularioProduto()
         formulario_preco = FormularioPreco()
         msg = 'erro ao salvar produto e preco'
-    return render(request, 'formulario.html', {'formulario_preco': formulario_preco, 'formulario_produto': formulario_produto})
+    return render(request, 'formulario.html',
+                  {'formulario_preco': formulario_preco, 'formulario_produto': formulario_produto})
 
 
 def atualiza_produto(request, id):

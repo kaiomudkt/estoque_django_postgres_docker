@@ -37,7 +37,7 @@ def atualiza_produto(request, id):
         produto.save()
         return redirect('catalogo')
     return render(request, 'formulario.html',
-                  {'formulario_preco': formulario_preco, 'formulario_produto': formulario_produto})
+                  {'produto': produto, 'formulario_preco': formulario_preco, 'formulario_produto': formulario_produto})
 
 
 def deletar_produto(request, id):

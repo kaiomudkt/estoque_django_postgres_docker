@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+       Lista logs, se tiver id é de um user, se nao todos os logs
+    </div>
+    <ul>
+        {% for log in logs %}
+            <a href="{% url 'atualiza_produto' produto.id %}">
+                <li> {{ log.id_usuario }}, {{ log.id_tabela }}, {{ log.tupla }}, {{ log.metodo }}, {{ log.data }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+</body>
+</html>

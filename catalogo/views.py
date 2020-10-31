@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Catalogo, Preco
+from .models import Catalogo
 from .forms import FormularioProduto, FormularioPreco
 
 def lista_produtos(request):

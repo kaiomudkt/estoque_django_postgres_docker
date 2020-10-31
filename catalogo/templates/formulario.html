@@ -14,7 +14,8 @@
 
     <form method="POST">
         {% csrf_token %}
-        {{ formulario }}
+        {{ formulario_preco }}
+        {{ formulario_produto }}
         <button type="submit">Salvar</button>
     </form>
 

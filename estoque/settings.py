@@ -35,11 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fornecedor',
     'catalogo',
     'preco',
-    'log',
     'lote',
-    'fornecedor'
+    'log'
 ]
 
 # 'catalogo.app.CatalogoConfig',

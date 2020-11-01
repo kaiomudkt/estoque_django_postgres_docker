@@ -10,16 +10,16 @@
 <body>
 
 <div>
-    lotes
+ fornecedores:
 </div>
 <ul>
-    {% for lote in lotes %}
-    <a href="{% url 'atualiza_lote' lote.id %}">
-        <li> {{ lote.id }}</li>
+    {% for fornecedor in fornecedores %}
+    <a href="{% url 'atualiza_fornecedor' fornecedor.id %}">
+        <li> {{ fornecedor.nome }}</li>
     </a>
     {% endfor %}
 </ul>
 
-<a href="{% url 'cadastra_lotes' %}">Novo lote</a>
+<a href="{% url 'cadastra_fornecedor' %}">Novo Fornecedor</a>
 </body>
 </html>

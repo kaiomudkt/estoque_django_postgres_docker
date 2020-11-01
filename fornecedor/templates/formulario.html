@@ -10,7 +10,7 @@
 <body>
 
 <!-- https://github.com/Gpzim98/django2-CRUD-30min/blob/master/products/templates/products-form.html -->
-<h1>New/Update Lote</h1>
+<h1>New/Update/Delete Fornecedor</h1>
 
 <form method="POST">
     {% csrf_token %}
@@ -18,9 +18,9 @@
     <button type="submit">Salvar</button>
 </form>
 
-{% if lote %}
-    <a href="{% url 'deletar_lote' lote.id %}">Deletar</a>
-{% endif %}
 
+{% if fornecedor %}
+    <a href="{% url 'deletar_produto' produto.id %}">Deletar</a>
+{% endif %}
 </body>
 </html>

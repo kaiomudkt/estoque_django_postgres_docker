@@ -4,16 +4,12 @@ https://www.treinaweb.com.br/blog/entendendo-o-mtv-do-django/
 explicação de como o django funciona
 https://medium.com/horadecodar/como-o-django-funciona-459184571a72
 
-curso de django (grandinho)
+curso de django
 https://www.youtube.com/playlist?list=PLvS2JoIlSA4BqUC40v-4hOzzzmwFyb4J2
 
 Criando novos comandos no django-admin
 http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html
 
-
-
-comando docker para abrir o terminal do container
-docker exec -i -t id-container /bin/bash
 
 Escrevendo seu primeiro app Django,
 https://docs.djangoproject.com/pt-br/3.1/intro/tutorial01/
@@ -47,20 +43,25 @@ inspectdb - retorna todos os modelos Django que geraram as tabelas do banco de d
 runserver - roda o servidor local do projeto Django.
 ############################################################################################################
 
+comando docker para abrir o terminal do container, que o projeto esta dentro
+#docker exec -i -t id-container /bin/bash
 
-comandos:
+comandos django:
+
 cria projeto django
-django-admin startproject mysite
+-django-admin startproject meuprojeto
 
 executa servidor
-python manage.py runserver
+-python manage.py runserver
 
 cria app, que é um diretório que contem seus arquivos, models.py, views.py, urls.py e outros
-python manage.py startapp novoApp
+-python manage.py startapp novoApp
+
 depois de criar o app, se tiver dentro do docker, os diretorio e o arquivos criados vão estar com grupo ROOT
 para arrumar isso, execute o comando fora do container
-sudo chown -R $USER:$USER novoApp
+#sudo chown -R $USER:$USER novoApp
 
 depois de mexer na model
-python manage.py makemigrations
-python manage.py migrate
+-python manage.py makemigrations
+-python manage.py migrate
+

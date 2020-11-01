@@ -10,3 +10,6 @@ class Catalogo(models.Model):
     id_preco = models.OneToOneField(Preco, on_delete=models.SET_NULL, null=True)
     descricao = models.TextField()
     # lote = models.ForeignKey(Lote, on_delete=models.CASCADE, related_name='lotes')
+
+    # def __str__(self):
+    #     return "%s" % (self.nome)

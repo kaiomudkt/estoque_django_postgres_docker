@@ -11,3 +11,6 @@ class Fornecedor(models.Model):
     cnpj = models.CharField(max_length=255)
     # lote = models.ForeignKey(Lote, on_delete=models.CASCADE, related_name='lotes')
     catalogo = models.ManyToManyField(Catalogo)
+
+    # def __str__(self):
+    #     return "%s" % (self.nome)

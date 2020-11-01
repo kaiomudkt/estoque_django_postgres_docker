@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .forms import FormularioProduto, FormularioPreco
 from .models import Catalogo
+from .forms import FormularioProduto, FormularioPreco
 
 
 def lista_produtos(request):

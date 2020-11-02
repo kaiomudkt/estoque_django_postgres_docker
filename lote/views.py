@@ -20,7 +20,7 @@ def cadastra_lote(request):
     else:
         formulario = FormularioLote()
         msg = 'erro ao salvar lote'
-    return render(request, 'formulario.html', {'formulario': formulario})
+    return render(request, 'formulario_lote.html', {'formulario': formulario})
 
 
 def atualiza_lote(request, id):
@@ -29,7 +29,7 @@ def atualiza_lote(request, id):
     if formulario.is_valid():
         formulario.save()
         return redirect('lotes')
-    return render(request, 'formulario.html', {'lote': lote, 'formulario': formulario})
+    return render(request, 'formulario_lote.html', {'lote': lote, 'formulario': formulario})
 
 
 def deletar_lote(request, id):

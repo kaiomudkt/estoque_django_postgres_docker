@@ -19,7 +19,7 @@ def cadastra_fornecedor(request):
     else:
         formulario = FormularioFornecedor()
         msg = 'erro ao salvar fornecedor'
-    return render(request, 'formulario.html', {'formulario': formulario})
+    return render(request, 'formulario_catalogo.html', {'formulario': formulario})
 
 
 def atualiza_fornecedor(request, id):
@@ -28,7 +28,7 @@ def atualiza_fornecedor(request, id):
     if formulario.is_valid():
         formulario.save()
         return redirect('fornecedores')
-    return render(request, 'formulario.html', {'fornecedir': fornecedor, 'formulario': formulario})
+    return render(request, 'formulario_catalogo.html', {'fornecedir': fornecedor, 'formulario': formulario})
 
 
 def deletar_fornecedor(request, id):

@@ -24,7 +24,7 @@ def cadastra_produto(request):
         formulario_produto = FormularioProduto()
         formulario_preco = FormularioPreco()
         msg = 'erro ao salvar produto e preco'
-    return render(request, 'formulario.html',
+    return render(request, 'formulario_catalogo.html',
                   {'formulario_preco': formulario_preco, 'formulario_produto': formulario_produto})
 
 
@@ -39,7 +39,7 @@ def atualiza_produto(request, id):
         produto.id_preco = preco
         produto.save()
         return redirect('catalogo')
-    return render(request, 'formulario.html',
+    return render(request, 'formulario_catalogo.html',
                   {'produto': produto, 'formulario_preco': formulario_preco, 'formulario_produto': formulario_produto})
 
 

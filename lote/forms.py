@@ -5,7 +5,7 @@ from catalogo.models import Catalogo
 from fornecedor.models import Fornecedor
 
 
-class ProdutoModelChoiceField(ModelChoiceField):
+class CatalogoModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
         return "%s| %s" % (obj.id, obj.nome)
 
@@ -16,11 +16,11 @@ class FornecedorModelChoiceField(ModelChoiceField):
 
 
 class FormularioLote(forms.ModelForm):
-    produto = ProdutoModelChoiceField(queryset=Catalogo.objects.all())
+    catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all())
     fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
 
     class Meta:
         model = Lote
-        fields = ['quantidade']
-        # fields = '__all__'
+        # fields = ['quantidade']
+        fields = '__all__'
         # exclude = ('data',)

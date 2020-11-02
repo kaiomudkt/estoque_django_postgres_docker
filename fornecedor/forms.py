@@ -14,5 +14,5 @@ class FormularioFornecedor(forms.ModelForm):
 
     class Meta:
         model = Fornecedor
-        # fields = '__all__'
-        exclude = ('catalogo', )
+        fields = '__all__'
+        # exclude = ('catalogo', )

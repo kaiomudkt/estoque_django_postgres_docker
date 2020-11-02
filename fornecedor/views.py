@@ -30,7 +30,7 @@ def atualiza_fornecedor(request, id):
     if formulario.is_valid():
         formulario.save()
         return redirect('fornecedores')
-    return render(request, 'formulario.html', {'fornecedir': fornecedor, 'formulario': formulario})
+    return render(request, 'formulario.html', {'fornecedor': fornecedor, 'formulario': formulario})
 
 
 def deletar_fornecedor(request, id):
@@ -38,4 +38,4 @@ def deletar_fornecedor(request, id):
     if request.method == 'POST':
         fornecedor.delete()
         return redirect('fornecedores')
-    return render(request, 'confirmar_del_fornecedor.html', {'fornecedor': fornecedor})
+    return render(request, 'confirma_del_fornecedor.html', {'fornecedor': fornecedor})

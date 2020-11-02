@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import FormularioFornecedor
 from fornecedor.models import Fornecedor
 
+
 def lista_fornecedores(request):
     fornecedores = Fornecedor.objects.all()
     return render(request, 'fornecedores.html', {'fornecedores': fornecedores})
@@ -19,16 +20,17 @@ def cadastra_fornecedor(request):
     else:
         formulario = FormularioFornecedor()
         msg = 'erro ao salvar fornecedor'
-    return render(request, 'formulario_catalogo.html', {'formulario': formulario})
+    return render(request, 'formulario.html', {'formulario': formulario})
 
 
+# TODO: Atualizar o nome do html para nome único
 def atualiza_fornecedor(request, id):
     fornecedor = Fornecedor.objects.get(id=id)
     formulario = FormularioFornecedor(request.POST or None, instance=fornecedor)
     if formulario.is_valid():
         formulario.save()
         return redirect('fornecedores')
-    return render(request, 'formulario_catalogo.html', {'fornecedir': fornecedor, 'formulario': formulario})
+    return render(request, 'formulario.html', {'fornecedir': fornecedor, 'formulario': formulario})
 
 
 def deletar_fornecedor(request, id):

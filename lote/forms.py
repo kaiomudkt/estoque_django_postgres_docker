@@ -7,12 +7,12 @@ from fornecedor.models import Fornecedor
 
 class ProdutoModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
-        return "Produto #%s) %s" % (obj.id, obj.nome)
+        return "%s| %s" % (obj.id, obj.nome)
 
 
 class FornecedorModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
-        return "Fornecedor #%s) %s" % (obj.id, obj.nome)
+        return "%s| %s" % (obj.id, obj.nome)
 
 
 class FormularioLote(forms.ModelForm):
@@ -21,6 +21,6 @@ class FormularioLote(forms.ModelForm):
 
     class Meta:
         model = Lote
-        # fields = ['quantidade']
-        fields = '__all__'
+        fields = ['quantidade']
+        # fields = '__all__'
         # exclude = ('data',)

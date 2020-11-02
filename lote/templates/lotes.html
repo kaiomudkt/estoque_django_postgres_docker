@@ -13,11 +13,25 @@
     lotes
 </div>
 <ul>
-    {% for lote in lotes %}
-    <a href="{% url 'atualiza_lote' lote.id %}">
-        <li> {{ lote.id }}</li>
-    </a>
-    {% endfor %}
+
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>QTD</th>
+            <th>Produto</th>
+        </tr>
+        {% for lote in lotes %}
+            <tr>
+                <td>
+                    <a href="{% url 'atualiza_lote' lote.id %}">{{ lote.id }}</a>
+                </td>
+                <td>{{ lote.quantidade }}</td>
+                <td>{{ lote.catalogo.nome }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
 </ul>
 
 <a href="{% url 'cadastra_lotes' %}">Novo lote</a>

@@ -13,6 +13,4 @@ class FormularioFornecedor(forms.ModelForm):
 
     class Meta:
         model = Fornecedor
-        #fields = ('nome','cnpj',)
         fields = '__all__'
-        # exclude = ('catalogo', )

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .forms import FormularioFornecedor
 from fornecedor.models import Fornecedor
+from .forms import FormularioFornecedor
 
 
 def lista_fornecedores(request):

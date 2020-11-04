@@ -26,6 +26,8 @@ https://stackoverflow.com/questions/28458770/how-can-create-a-model-form-in-djan
 https://www.webforefront.com/django/modelformrelationships.html
 https://stackoverflow.com/questions/48453061/form-for-simultaneously-editing-two-django-models-with-foreign-key-relationship
 
+add css, com o crispy forms, os forms pega css padrão, e depois de configurar para usar bootstrap, só chamar suas class html
+https://medium.com/@luizmacieldev/estilizando-seus-formul%C3%A1rios-em-django-com-crispy-forms-23c1d983c90e
 
 ############################################################################################################
 O django-admin ou manage.py já tem um bocado de comandos interessantes, os mais utilizados são:

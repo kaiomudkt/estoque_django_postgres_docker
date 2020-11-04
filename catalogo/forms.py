@@ -12,7 +12,7 @@ class FormularioProduto(forms.ModelForm):
     fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
     class Meta:
         model = Catalogo
-        fields = ['nome', 'descricao']
+        fields = ['nome', 'descricao', 'slug']
         # exclude = ('id_preco',)
 
 

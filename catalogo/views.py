@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 from .forms import FormularioProduto, FormularioPreco
 from .models import Catalogo
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
-
-def lista_produtos(request):
-    catalogo = Catalogo.objects.all()
-    return render(request, 'catalogo.html', {'catalogo': catalogo})
+class CatalogoListar(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Catalogo
+    template_name = 'catalogo.html'
+    # def lista_produtos(request):
+    #     catalogo = Catalogo.objects.all()
+    #     return render(request, 'catalogo.html', {'catalogo': catalogo})
 
 
 def cadastra_produto(request):

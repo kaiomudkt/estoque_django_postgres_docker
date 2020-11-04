@@ -21,7 +21,7 @@
 </div>
 <main>
     <ul>
-        {% for produto in catalogo %}
+        {% for produto in object_list %}
         <a href="{% url 'atualiza_produto' produto.id %}">
             <li> {{ produto.nome }}</li>
         </a>

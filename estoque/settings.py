@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'preco',
     'lote',
     'log',
+    'usuario.apps.UsuarioConfig',
+    # apps de terceiros
     'crispy_forms'
 ]
 
@@ -131,4 +133,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# configuracao da biblioteca CSS que o crispy vai usar
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# configuracao de Autenticacao, usuario/urls.py, rota: login, home
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+# se usuario não estiver logado, chama tela de login
+LOGIN_URL = 'login'

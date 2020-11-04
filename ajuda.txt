@@ -6,6 +6,7 @@ https://medium.com/horadecodar/como-o-django-funciona-459184571a72
 
 curso de django
 https://www.youtube.com/playlist?list=PLvS2JoIlSA4BqUC40v-4hOzzzmwFyb4J2
+https://www.youtube.com/playlist?list=PLjv17QYEBJPpd6nI-MXpIa4qR7prKfPQz
 
 Criando novos comandos no django-admin
 http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html
@@ -46,7 +47,7 @@ runserver - roda o servidor local do projeto Django.
 ############################################################################################################
 
 comando docker para abrir o terminal do container, que o projeto esta dentro
-#docker exec -i -t id-container /bin/bash
+# docker exec -i -t id-container /bin/bash
 
 comandos django:
 

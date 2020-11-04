@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+{% if request.user.is_authenticated %}
 
 <div>
     arquivo catalogo.html,
@@ -18,14 +19,23 @@
 
     ainda falta pegar seus lotes
 </div>
-<ul>
-    {% for produto in catalogo %}
-    <a href="{% url 'atualiza_produto' produto.id %}">
-        <li> {{ produto.nome }}</li>
-    </a>
-    {% endfor %}
-</ul>
-
+<main>
+    <ul>
+        {% for produto in catalogo %}
+        <a href="{% url 'atualiza_produto' produto.id %}">
+            <li> {{ produto.nome }}</li>
+        </a>
+        {% endfor %}
+    </ul>
+</main>
 <a href="{% url 'cadastra_produto' %}">Novo produto</a>
+{% else %}
+    <li>
+        <a href="{% url 'login' %}">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            Logar
+        </a>
+    </li>
+{% endif %}
 </body>
 </html>

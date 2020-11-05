@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fornecedor',
     'catalogo',
-    'preco',
     'lote',
     'log',
     'usuario.apps.UsuarioConfig',

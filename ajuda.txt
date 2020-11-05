@@ -19,8 +19,12 @@ Relacionamentos
 https://www.treinaweb.com.br/blog/relacionamento-1-1-1-n-e-n-n-com-django/
 https://docs.djangoproject.com/en/3.1/topics/db/examples/one_to_one/
 
+
 django import forms.ModelForm, cria automaticamente formularios
 https://docs.djangoproject.com/en/3.1/topics/forms/modelforms/
+https://swapps.com/blog/working-with-nested-forms-with-django/
+https://colinkingswood.github.io/Model-Form-Customisation/
+https://medium.com/@EmadMokhtar/extend-django-user-model-and-gcbv-4745ab901ba
 
 Opções de campo de formulário ModelChoiceField e ModelMultipleChoiceField: relacionamentos
 https://stackoverflow.com/questions/28458770/how-can-create-a-model-form-in-django-with-a-one-to-one-relation-with-another-mo
@@ -68,3 +72,5 @@ depois de mexer na model
 -python manage.py makemigrations
 -python manage.py migrate
 
+para entregar na tela é necessario estar logado, para criar um super usuario use o comando
+python manage.py createsuperuser

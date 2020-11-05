@@ -8,14 +8,14 @@ class FornecedorModelChoiceField(ModelMultipleChoiceField):
     def label_from_instance(self, obj):
         return "%s| %s" % (obj.id, obj.nome)
 
-class FormularioProduto(forms.ModelForm):
+class CatalogoForm(forms.ModelForm):
     fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
     class Meta:
         model = Catalogo
         fields = ['nome', 'descricao', 'slug']
 
 
-class FormularioPreco(forms.ModelForm):
+class PrecoCreateForm(forms.ModelForm):
     class Meta:
         model = Preco
         fields = ['real', 'dolar']

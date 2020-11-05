@@ -16,9 +16,14 @@
     <h1 class="text-center">New/Update/Delete produto</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ formulario_preco|crispy }}
-        {{ formulario_produto|crispy }}
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        {{ preco_form|crispy }}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-light mt-3">
+
+            {{ icone }}
+            {% endautoescape %}
+            {{ botao }}
+        </button>
     </form>
     {% if produto %}
     <a href="{% url 'deletar_produto' produto.id %}">Deletar</a>

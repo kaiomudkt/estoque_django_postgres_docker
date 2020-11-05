@@ -18,5 +18,5 @@ class Catalogo(models.Model):
 
     # def __str__(self):
     #     return "%s" % (self.nome)
-    def __str__(self):
-        return "[{}] {}".format(self.pk, self.nome )
+    # def __str__(self):
+    #     return "[{}] {}".format(self.pk, self.nome )

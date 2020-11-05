@@ -3,7 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
 from .forms import CatalogoForm, PrecoCreateForm
@@ -56,7 +56,7 @@ class CatalogoCadastrar(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         #return HttpResponseRedirect(self.get_success_url())
 
 
-class CatalogoAtualizar(SuccessMessageMixin ,LoginRequiredMixin, UpdateView):
+class CatalogoAtualizar(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = reverse_lazy('login')
     model = Catalogo
     template_name = 'formulario_catalogo.html'
@@ -72,18 +72,20 @@ class CatalogoAtualizar(SuccessMessageMixin ,LoginRequiredMixin, UpdateView):
         context['icone'] = '<i class="fa fa-check" aria-hidden="true"></i>'
         return context
 
-    # TODO acho que nao é user, ainda nao sei como pegar pk
-    # https://medium.com/@EmadMokhtar/extend-django-user-model-and-gcbv-4745ab901ba
-    # https://github.com/rafaelzottesso/Curso-Django-2-Python-3/blob/master/cadastros/views.py
     def get_object(self, queryset=None):
-        self.object = get_object_or_404(Catalogo, pk=self.kwargs['pk'], usuario=self.request.user)
+        self.object = get_object_or_404(Catalogo, pk=self.kwargs['id'])
+        # self.object = get_object_or_404(Catalogo, pk=self.kwargs['id'], usuario=self.request.user)
         return self.object
 
     def form_valid(self, form):
-        preco_form = PrecoCreateForm(self.request.POST, isinstance=self.object.preco)
+        preco_form = PrecoCreateForm(self.request.POST, instance=self.object.preco)
         if preco_form.is_valid():
-            preco_form.save()
-            return super(CatalogoAtualizar, self).form_valid(form)
+            preco = preco_form.save()
+            produto = form.save(commit=False)
+            produto.preco = preco
+            produto.save()
+            return HttpResponseRedirect(self.get_success_url())
+            # return super(CatalogoAtualizar, self).form_valid(form)
         # Antes do super não foi criado o objeto nem salvo no banco
         # form.instance.usuario = self.request.user
         # url = super().form_valid(form)

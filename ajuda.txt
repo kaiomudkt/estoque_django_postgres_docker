@@ -20,7 +20,7 @@ https://www.treinaweb.com.br/blog/relacionamento-1-1-1-n-e-n-n-com-django/
 https://docs.djangoproject.com/en/3.1/topics/db/examples/one_to_one/
 
 
-django import forms.ModelForm, cria automaticamente formularios
+django import forms.ModelForm, cria automaticamente formularios, dando problema por causa dos relacionamentos, 1:1, 1:n e n:n  
 https://docs.djangoproject.com/en/3.1/topics/forms/modelforms/
 https://swapps.com/blog/working-with-nested-forms-with-django/
 https://colinkingswood.github.io/Model-Form-Customisation/

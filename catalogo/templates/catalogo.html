@@ -1,41 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br" class="h-100">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
 <body>
-{% if request.user.is_authenticated %}
 
-<div>
-    arquivo catalogo.html,
-
-    tela do catalogo,
-
-    este arquivo lista todos os produtos cadastrado no catalogo,
-
-    ainda falta pegar seus lotes
-</div>
 <main>
-    <ul>
-        {% for produto in object_list %}
-        <a href="{% url 'atualiza_produto' produto.id %}">
-            <li> {{ produto.nome }}</li>
-        </a>
-        {% endfor %}
-    </ul>
+    <a href="{% url 'cadastra_produto' %}"  class="btn btn-info btn-sm" title="Editar">
+                        Novo produto
+                    </a>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Preço|Real</th>
+            </tr>
+            {% for produto in object_list %}
+            <tr>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.preco.real }}</td>
+                <td>
+                    <a href="{% url 'atualiza_produto' produto.id %}"  class="btn btn-warning btn-sm" title="Editar">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a href="{% url 'deletar_produto' produto.id %}" class="btn btn-danger btn-sm" title="Excluir">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum produto registrado.</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
 </main>
-<a href="{% url 'cadastra_produto' %}">Novo produto</a>
-{% else %}
-<li>
-    <a href="{% url 'login' %}">
-        <i class="fa fa-sign-in" aria-hidden="true"></i>
-        Logar
-    </a>
-</li>
-{% endif %}
 </body>
 </html>

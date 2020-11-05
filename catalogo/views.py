@@ -56,7 +56,7 @@ class CatalogoCadastrar(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         #return HttpResponseRedirect(self.get_success_url())
 
 
-class CatalogoAtualizar(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class CatalogoAtualizar(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
     model = Catalogo
     template_name = 'formulario_catalogo.html'
@@ -90,20 +90,6 @@ class CatalogoAtualizar(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         # form.instance.usuario = self.request.user
         # url = super().form_valid(form)
         # return url
-
-# def atualiza_produto(request, id):
-#     produto = Catalogo.objects.get(id=id)
-#     preco = produto.id_preco
-#     formulario_produto = FormularioProduto(request.POST or None, instance=produto)
-#     formulario_preco = FormularioPreco(request.POST or None, instance=preco)
-#     if all([formulario_produto.is_valid(), formulario_preco.is_valid()]):
-#         preco = formulario_preco.save()
-#         produto = formulario_produto.save(commit=False)
-#         produto.id_preco = preco
-#         produto.save()
-#         return redirect('catalogo')
-#     return render(request, 'formulario_catalogo.html',
-#                   {'produto': produto, 'formulario_preco': formulario_preco, 'formulario_produto': formulario_produto})
 
 
 def deletar_produto(request, id):

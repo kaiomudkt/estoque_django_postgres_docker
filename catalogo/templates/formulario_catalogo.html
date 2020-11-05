@@ -13,7 +13,6 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">New/Update/Delete produto</h1>
     <form method="POST">
         {% csrf_token %}
         {{ preco_form|crispy }}
@@ -25,9 +24,6 @@
             {{ botao }}
         </button>
     </form>
-    {% if produto %}
-    <a href="{% url 'deletar_produto' produto.id %}">Deletar</a>
-    {% endif %}
 </div>
 </body>
 </html>

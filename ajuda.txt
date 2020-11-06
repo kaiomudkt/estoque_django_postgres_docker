@@ -1,3 +1,11 @@
+problemas:
+    1) A tela de atualizar produto, não vem marcado quais fornecedores entrega este produto
+    2) o ManyToMany entre fornecedor e catalogo, não aceitar passar em branco os dados do relacionamento
+
+Falta fazer:
+    1) falta fazer do zero a trigger de log ...
+
+
 arquitetura(pastas/diretorios) do django
 https://www.treinaweb.com.br/blog/entendendo-o-mtv-do-django/
 

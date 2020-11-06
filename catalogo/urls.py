@@ -7,10 +7,10 @@ from .views import UsuarioCreate, PerfilUpdate
 urlpatterns = [
     path('', auth_views.LoginView.as_view(template_name='home.html'), name="home"),
 
-    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('registrar/', UsuarioCreate.as_view(), name='registrar'),
-    path('atualizar-dados/', PerfilUpdate.as_view(), name='atualizar-dados'),
+    path('usuario/login/', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
+    path('usuario/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('usuario/registrar/', UsuarioCreate.as_view(), name='registrar_usuario'),
+    path('usuario/atualizar/', PerfilUpdate.as_view(), name='atualizar_usuario'),
 
     path('catalogo/', CatalogoListar.as_view(), name='lista_catalogo'),
     path('catalogo/cadastrar', CatalogoCadastrar.as_view(), name='cadastra_produto'),

@@ -1,22 +1,26 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
+from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-from django.contrib.auth.models import Group
-from .models import Catalogo, Preco, Fornecedor, Perfil
+
 from .forms import CatalogoForm, PrecoCreateForm, FormularioFornecedor, UsuarioForm
+from .models import Catalogo, Preco, Fornecedor, Perfil
 
 
+# Pagina Inicial
+class Home(TemplateView):
+    template_name = 'home.html'
 
 
 # CATALOGO/PRODUTO
 class CatalogoListar(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Catalogo
-    template_name = 'catalogo.html'
+    template_name = 'listar/catalogo.html'
 
 
 class PrecoCadastrar(CreateView):
@@ -97,11 +101,12 @@ class CatalogoDeletar(LoginRequiredMixin, DeleteView):
         self.object = get_object_or_404(Catalogo, pk=self.kwargs['id'])
         return self.object
 
+
 #   FORNECEDOR
 class FornecedorListar(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Fornecedor
-    template_name = 'fornecedores.html'
+    template_name = 'listar/fornecedores.html'
 
 
 class FornecedorAtualizar(LoginRequiredMixin, UpdateView):
@@ -117,6 +122,10 @@ class FornecedorAtualizar(LoginRequiredMixin, UpdateView):
         context['titulo'] = "Editar cadastro de fornecedor"
         context['botao'] = "Salvar"
         return context
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Fornecedor, pk=self.kwargs['id'])
+        return self.object
 
 
 class FornecedorCadastrar(LoginRequiredMixin, CreateView):
@@ -143,10 +152,6 @@ class FornecedorDeletar(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset=None):
         self.object = get_object_or_404(Catalogo, pk=self.kwargs['id'])
         return self.object
-
-
-
-
 
 
 #  USUARIO

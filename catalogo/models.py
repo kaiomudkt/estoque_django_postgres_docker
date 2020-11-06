@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Perfil(models.Model):
@@ -19,7 +19,6 @@ class Catalogo(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     preco = models.OneToOneField(Preco, on_delete=models.SET_NULL, null=True)
     descricao = models.TextField()
-
 
 
 class Fornecedor(models.Model):

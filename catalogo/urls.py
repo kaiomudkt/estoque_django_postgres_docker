@@ -1,11 +1,13 @@
-from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.urls import path
+
 from .views import CatalogoDeletar, CatalogoListar, CatalogoCadastrar, CatalogoAtualizar
 from .views import FornecedorDeletar, FornecedorListar, FornecedorCadastrar, FornecedorAtualizar
+from .views import Home
 from .views import UsuarioCreate, PerfilUpdate
 
 urlpatterns = [
-    path('', auth_views.LoginView.as_view(template_name='home.html'), name="home"),
+    path('', Home.as_view(template_name='home.html'), name="home"),
 
     path('usuario/login/', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
     path('usuario/logout/', auth_views.LogoutView.as_view(), name='logout'),

@@ -7,8 +7,8 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
-from .forms import CatalogoForm, PrecoCreateForm, FormularioFornecedor, UsuarioForm
-from .models import Catalogo, Preco, Fornecedor, Perfil
+from .forms import CatalogoForm, PrecoCreateForm, FormularioFornecedor, UsuarioForm, FormularioLote
+from .models import Catalogo, Preco, Fornecedor, Perfil, Lote
 
 
 # Pagina Inicial
@@ -182,3 +182,54 @@ class PerfilUpdate(UpdateView):
         context["titulo"] = "Meus dados pessoais"
         context["botao"] = "Atualizar"
         return context
+
+# LOTE
+class LoteListar(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Lote
+    template_name = 'listar/lotes.html'
+
+
+class LoteAtualizar(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    model = Lote
+    template_name = 'formulario.html'
+    form_class = FormularioLote
+    success_url = reverse_lazy('lista_lotes')
+    success_message = 'Sucesso ao atualizar lote.'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['titulo'] = "Editar cadastro de lote"
+        context['botao'] = "Salvar"
+        return context
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Lote, pk=self.kwargs['id'])
+        return self.object
+
+
+class LoteCadastrar(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    model = Lote
+    template_name = 'formulario.html'
+    success_url = reverse_lazy('lista_lotes')
+    form_class = FormularioLote
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['titulo'] = "Cadastro de Lote"
+        context['botao'] = "Cadastrar Lote"
+        context['icone'] = '<i class="fa fa-check" aria-hidden="true"></i>'
+        return context
+
+
+class LoteDeletar(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
+    model = Lote
+    template_name = 'confirmar_del.html'
+    success_url = reverse_lazy('lista_lotes')
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Lote, pk=self.kwargs['id'])
+        return self.object

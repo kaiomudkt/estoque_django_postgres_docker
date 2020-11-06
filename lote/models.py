@@ -1,7 +1,6 @@
 from django.db import models
 
-from catalogo.models import Catalogo
-from fornecedor.models import Fornecedor
+from catalogo.models import Catalogo, Fornecedor
 
 
 class Lote(models.Model):

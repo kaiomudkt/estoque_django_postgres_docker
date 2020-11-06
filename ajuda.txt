@@ -4,6 +4,7 @@ problemas:
 
 Falta fazer:
     1) falta fazer do zero a trigger de log ...
+    2) falta testar usuario, criar, editar, apagar, ...
 
 
 arquitetura(pastas/diretorios) do django

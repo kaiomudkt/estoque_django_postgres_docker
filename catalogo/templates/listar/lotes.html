@@ -1,0 +1,37 @@
+{% extends 'modelo.html' %}
+
+{% block conteudo %}
+<main class="container">
+    <a href="{% url 'cadastra_lote' %}" class="btn btn-info btn-sm" title="novo">
+        Novo Lote
+    </a>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Quantidade</th>
+                <th>Produto</th>
+            </tr>
+            {% for lote in object_list %}
+            <tr>
+                <td>{{ lote.id }}</td>
+                <td>{{ lote.quantidade }}</td>
+                <td>{{ lote.produto.nome }}</td>
+                <td>
+                    <a href="{% url 'atualiza_lote' lote.id %}" class="btn btn-warning btn-sm" title="Editar">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a href="{% url 'deletar_lote' lote.id %}" class="btn btn-danger btn-sm" title="Excluir">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum lote registrado.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</main>
+{% endblock %}

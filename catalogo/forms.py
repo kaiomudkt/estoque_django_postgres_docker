@@ -1,9 +1,10 @@
 from django import forms
-from .models import Catalogo, Preco, Fornecedor
+from .models import Catalogo, Preco, Fornecedor, Lote
 from django.contrib.auth.models import User
 from django.forms import ModelMultipleChoiceField
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django.forms import ModelChoiceField
 
 # CATALOGO / PRODUTO
 class FornecedorModelChoiceField(ModelMultipleChoiceField):
@@ -51,4 +52,23 @@ class UsuarioForm(UserCreationForm):
 
         return e
 
-# 
+# LOTE
+class CatalogoModelChoiceField(ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s| %s" % (obj.id, obj.nome)
+
+
+class FornecedorModelChoiceField(ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s| %s" % (obj.id, obj.nome)
+
+
+class FormularioLote(forms.ModelForm):
+    catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all())
+    fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
+
+    class Meta:
+        model = Lote
+        # fields = ['quantidade']
+        fields = '__all__'
+        # exclude = ('data',)

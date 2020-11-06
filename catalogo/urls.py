@@ -1,8 +1,9 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from .views import CatalogoDeletar, CatalogoListar, CatalogoCadastrar, CatalogoAtualizar
+from .views import CatalogoDeletar, CatalogoListar, CatalogoCadastrar, CatalogoAtualizar, LoteListar
 from .views import FornecedorDeletar, FornecedorListar, FornecedorCadastrar, FornecedorAtualizar
+from .views import LoteListar, LoteAtualizar, LoteCadastrar, LoteDeletar
 from .views import Home
 from .views import UsuarioCreate, PerfilUpdate
 
@@ -23,4 +24,9 @@ urlpatterns = [
     path('fornecedor/cadastrar', FornecedorCadastrar.as_view(), name='cadastra_fornecedor'),
     path('fornecedor/atualizar<int:id>/', FornecedorAtualizar.as_view(), name='atualiza_fornecedor'),
     path('fornecedor/deletar<int:id>/', FornecedorDeletar.as_view(), name='deletar_fornecedor'),
+
+    path('lotes/', LoteListar.as_view(), name='lista_lotes'),
+    path('lote/cadastrar', LoteCadastrar.as_view(), name='cadastra_lote'),
+    path('lote/atualizar<int:id>/', LoteAtualizar.as_view(), name='atualiza_lote'),
+    path('lote/deletar<int:id>/', LoteDeletar.as_view(), name='deletar_lote'),
 ]

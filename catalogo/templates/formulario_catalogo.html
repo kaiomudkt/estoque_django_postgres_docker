@@ -17,7 +17,7 @@
         {% csrf_token %}
         {{ preco_form|crispy }}
         {{ form|crispy }}
-        <button type="submit"  class="btn btn-info btn-sm" title="Cadastrar produto">
+        <button type="submit" class="btn btn-info btn-sm" title="Cadastrar produto">
             {% autoescape off %}
             {{ icone }}
             {% endautoescape %}

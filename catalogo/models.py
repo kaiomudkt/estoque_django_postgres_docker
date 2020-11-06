@@ -1,7 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-# from lote.models import Lote
+class Perfil(models.Model):
+    nome_completo = models.CharField(max_length=50, null=True)
+    cpf = models.CharField(max_length=14, null=True, verbose_name="CPF")
+    telefone = models.CharField(max_length=16, null=True)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class Preco(models.Model):
@@ -14,9 +19,16 @@ class Catalogo(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     preco = models.OneToOneField(Preco, on_delete=models.SET_NULL, null=True)
     descricao = models.TextField()
-    # lote = models.ForeignKey(Lote, on_delete=models.CASCADE, related_name='lotes')
 
-    # def __str__(self):
-    #     return "%s" % (self.nome)
-    # def __str__(self):
-    #     return "[{}] {}".format(self.pk, self.nome )
+
+
+class Fornecedor(models.Model):
+    nome = models.CharField(max_length=255)
+    cnpj = models.CharField(max_length=255)
+    catalogo = models.ManyToManyField(Catalogo, through='ProdutoFornecedor', through_fields=('produto', 'fornecedor'),
+                                      blank=True, null=True)
+
+
+class ProdutoFornecedor(models.Model):
+    produto = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
+    fornecedor = models.ForeignKey(Catalogo, on_delete=models.CASCADE)

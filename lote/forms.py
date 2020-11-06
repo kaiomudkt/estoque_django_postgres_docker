@@ -1,8 +1,7 @@
 from django import forms
 from .models import Lote
 from django.forms import ModelChoiceField
-from catalogo.models import Catalogo
-from fornecedor.models import Fornecedor
+from catalogo.models import Catalogo, Fornecedor
 
 
 class CatalogoModelChoiceField(ModelChoiceField):

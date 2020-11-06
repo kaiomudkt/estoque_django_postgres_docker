@@ -1,0 +1,86 @@
+problemas:
+    1) A tela de atualizar produto, não vem marcado quais fornecedores entrega este produto
+    2) o ManyToMany entre fornecedor e catalogo, não aceitar passar em branco os dados do relacionamento
+
+Falta fazer:
+    1) falta fazer do zero a trigger de log ...
+
+
+arquitetura(pastas/diretorios) do django
+https://www.treinaweb.com.br/blog/entendendo-o-mtv-do-django/
+
+explicação de como o django funciona
+https://medium.com/horadecodar/como-o-django-funciona-459184571a72
+
+curso de django
+https://www.youtube.com/playlist?list=PLvS2JoIlSA4BqUC40v-4hOzzzmwFyb4J2
+https://www.youtube.com/playlist?list=PLjv17QYEBJPpd6nI-MXpIa4qR7prKfPQz
+https://github.com/rafaelzottesso/Curso-Django-2-Python-3
+
+Criando novos comandos no django-admin
+http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html
+
+
+Escrevendo seu primeiro app Django,
+https://docs.djangoproject.com/pt-br/3.1/intro/tutorial01/
+
+Relacionamentos
+https://www.treinaweb.com.br/blog/relacionamento-1-1-1-n-e-n-n-com-django/
+https://docs.djangoproject.com/en/3.1/topics/db/examples/one_to_one/
+
+
+django import forms.ModelForm, cria automaticamente formularios, dando problema por causa dos relacionamentos, 1:1, 1:n e n:n  
+https://docs.djangoproject.com/en/3.1/topics/forms/modelforms/
+https://swapps.com/blog/working-with-nested-forms-with-django/
+https://colinkingswood.github.io/Model-Form-Customisation/
+https://medium.com/@EmadMokhtar/extend-django-user-model-and-gcbv-4745ab901ba
+https://django-betterforms.readthedocs.io/en/latest/multiform.html
+
+Opções de campo de formulário ModelChoiceField e ModelMultipleChoiceField: relacionamentos
+https://stackoverflow.com/questions/28458770/how-can-create-a-model-form-in-django-with-a-one-to-one-relation-with-another-mo
+https://www.webforefront.com/django/modelformrelationships.html
+https://stackoverflow.com/questions/48453061/form-for-simultaneously-editing-two-django-models-with-foreign-key-relationship
+
+add css, com o crispy forms, os forms pega css padrão, e depois de configurar para usar bootstrap, só chamar suas class html
+https://medium.com/@luizmacieldev/estilizando-seus-formul%C3%A1rios-em-django-com-crispy-forms-23c1d983c90e
+
+############################################################################################################
+O django-admin ou manage.py já tem um bocado de comandos interessantes, os mais utilizados são:
+
+startproject - cria novos projetos.
+startapp - cria novas apps.
+makemigrations - cria novas migrações baseadas nas mudanças detectadas nos modelos Django.
+migrate - sincroniza o banco de dados com as novas migrações.
+createsuperuser - cria novos usuários.
+test - roda os testes da aplicação.
+loaddata - carrega dados iniciais a partir de um json, por exemplo, python manage.py loaddata fixtures.json
+shell - inicializa um interpretador Python interativo.
+dbshell - acessa o banco de dados através da linha de comando, ou seja, você pode executar comandos sql do banco, por exemplo, diretamente no terminal.
+inspectdb - retorna todos os modelos Django que geraram as tabelas do banco de dados.
+runserver - roda o servidor local do projeto Django.
+############################################################################################################
+
+comando docker para abrir o terminal do container, que o projeto esta dentro
+# docker exec -i -t id-container /bin/bash
+
+comandos django:
+
+cria projeto django
+-django-admin startproject meuprojeto
+
+executa servidor
+-python manage.py runserver
+
+cria app, que é um diretório que contem seus arquivos, models.py, views.py, urls.py e outros
+-python manage.py startapp novoApp
+
+depois de criar o app, se tiver dentro do docker, os diretorio e o arquivos criados vão estar com grupo ROOT
+para arrumar isso, execute o comando fora do container
+#sudo chown -R $USER:$USER .
+
+depois de mexer na model
+-python manage.py makemigrations
+-python manage.py migrate
+
+para entregar na tela é necessario estar logado, para criar um super usuario use o comando
+python manage.py createsuperuser

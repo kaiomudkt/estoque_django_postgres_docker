@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalogo',
-    'lote',
     'log',
     # apps de terceiros
     'crispy_forms'

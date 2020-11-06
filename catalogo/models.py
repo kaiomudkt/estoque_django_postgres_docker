@@ -31,3 +31,10 @@ class Fornecedor(models.Model):
 class ProdutoFornecedor(models.Model):
     produto = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
     fornecedor = models.ForeignKey(Catalogo, on_delete=models.CASCADE)
+
+
+class Lote(models.Model):
+    data = models.DateTimeField(auto_now_add=True)
+    quantidade = models.IntegerField()
+    fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE, related_name='fornecedores')
+    catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE, related_name='catalogo')

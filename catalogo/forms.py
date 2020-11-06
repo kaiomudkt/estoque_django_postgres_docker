@@ -14,8 +14,8 @@ class CatalogoForm(forms.ModelForm):
     fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
     class Meta:
         model = Catalogo
-        fields = ['nome', 'descricao', 'slug']
-
+        # fields = ['nome', 'descricao', 'slug']
+        exclude = ('preco',)
 
 class PrecoCreateForm(forms.ModelForm):
     class Meta:
@@ -31,7 +31,6 @@ class CatalogoModelChoiceField(ModelMultipleChoiceField):
 
 class FormularioFornecedor(forms.ModelForm):
     catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all())
-
     class Meta:
         model = Fornecedor
         fields = '__all__'

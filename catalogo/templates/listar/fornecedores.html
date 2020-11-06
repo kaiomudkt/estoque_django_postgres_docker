@@ -1,25 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'modelo.html' %}
 
-<div>
-    fornecedores:
-    <a href="{% url 'cadastra_fornecedor' %}">Novo Fornecedor</a>
-</div>
-<ul>
-    {% for fornecedor in object_list %}
-    <a href="{% url 'atualiza_fornecedor' fornecedor.id %}">
-        <li> {{ fornecedor.nome }}</li>
+{% block conteudo %}
+<main class="container">
+    <a href="{% url 'cadastra_fornecedor' %}" class="btn btn-info btn-sm" title="novo">
+        Novo Fornecedor
     </a>
-    {% endfor %}
-</ul>
-
-</body>
-</html>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>CNPJ</th>
+            </tr>
+            {% for fornecedor in object_list %}
+            <tr>
+                <td>{{ fornecedor.nome }}</td>
+                <td>{{ fornecedor.cnpj }}</td>
+                <td>
+                    <a href="{% url 'atualiza_fornecedor' fornecedor.id %}" class="btn btn-warning btn-sm" title="Editar">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a href="{% url 'deletar_fornecedor' fornecedor.id %}" class="btn btn-danger btn-sm" title="Excluir">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum fornecedor registrado.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</main>
+{% endblock %}

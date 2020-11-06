@@ -147,10 +147,10 @@ class FornecedorDeletar(LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
     model = Fornecedor
     template_name = 'confirmar_del.html'
-    success_url = reverse_lazy('lista_catalogo')
+    success_url = reverse_lazy('lista_fornecedores')
 
     def get_object(self, queryset=None):
-        self.object = get_object_or_404(Catalogo, pk=self.kwargs['id'])
+        self.object = get_object_or_404(Fornecedor, pk=self.kwargs['id'])
         return self.object
 
 

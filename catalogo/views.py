@@ -166,6 +166,11 @@ class UsuarioCreate(CreateView):
         context['botao'] = "Cadastrar"
         return context
 
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        self.object.save()
+        Perfil.objects.create(usuario=self.object)
+        return url
 
 class PerfilUpdate(UpdateView):
     template_name = "formulario.html"

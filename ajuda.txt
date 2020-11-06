@@ -1,11 +1,13 @@
 problemas:
     1) A tela de atualizar produto, não vem marcado quais fornecedores entrega este produto
     2) o ManyToMany entre fornecedor e catalogo, não aceitar passar em branco os dados do relacionamento
-
+    3) preco não é deletado quando o produto é deletado
 Falta fazer:
     1) falta fazer do zero a trigger de log ...
     2) falta testar usuario, criar, editar, apagar, ...
-
+    3) colocar lote e fornecedor  na tela do admin tb
+Aviso:
+    não entre no perfil usando o superUser, pois ele tem outros campos e é cadastrado diferente, use o Use criado pelo projeto
 
 arquitetura(pastas/diretorios) do django
 https://www.treinaweb.com.br/blog/entendendo-o-mtv-do-django/

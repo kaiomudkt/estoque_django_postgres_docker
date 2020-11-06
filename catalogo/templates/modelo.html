@@ -15,8 +15,6 @@
     <div class="container">
         <!-- Menu -->
         <header>
-            {% if request.user.is_authenticated %}
-            {% endif %}
             <nav class="navbar navbar-expand-lg font-115 shadow">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">home</a></li>
@@ -27,11 +25,13 @@
                 </ul>
 
                 <ul class="navbar-nav mr-auto">
-                    {% if not request.user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">login</a></li>
-                    {% else %}
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item"><span class="nav-link">User: {{ request.user }}</span></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'atualizar_usuario' %}">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'registrar_usuario' %}">Cadastrar-se</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                     {% endif %}
                 </ul>
             </nav>
@@ -42,6 +42,8 @@
             Corpo do site
             {% endblock %}
         </div>
+        if user.role == 'admin':
+        <a href="">dashboard</a>
     </div>
 </body>
 

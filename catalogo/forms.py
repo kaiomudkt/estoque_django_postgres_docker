@@ -1,22 +1,26 @@
 from django import forms
-from .models import Catalogo, Preco, Fornecedor, Lote
+from .models import Catalogo, Preco, Fornecedor, Lote, ProdutoFornecedor
 from django.contrib.auth.models import User
 from django.forms import ModelMultipleChoiceField
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.forms import ModelChoiceField
 
+
 # CATALOGO / PRODUTO
 class FornecedorModelChoiceField(ModelMultipleChoiceField):
     def label_from_instance(self, obj):
         return "%s| %s" % (obj.id, obj.nome)
 
+
 class CatalogoForm(forms.ModelForm):
     fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
+
     class Meta:
         model = Catalogo
         # fields = ['nome', 'descricao', 'slug']
         exclude = ('preco',)
+
 
 class PrecoCreateForm(forms.ModelForm):
     class Meta:
@@ -31,7 +35,8 @@ class CatalogoModelChoiceField(ModelMultipleChoiceField):
 
 
 class FormularioFornecedor(forms.ModelForm):
-    catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all())
+    catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all(), required=False)
+
     class Meta:
         model = Fornecedor
         fields = '__all__'
@@ -52,23 +57,15 @@ class UsuarioForm(UserCreationForm):
 
         return e
 
-# LOTE
-class CatalogoModelChoiceField(ModelChoiceField):
-    def label_from_instance(self, obj):
-        return "%s| %s" % (obj.id, obj.nome)
 
-
-class FornecedorModelChoiceField(ModelChoiceField):
+class ProdutoFornecedorModelChoiceField(ModelMultipleChoiceField):
     def label_from_instance(self, obj):
-        return "%s| %s" % (obj.id, obj.nome)
+        return "Produto: %s | Fornecedor: %s" % (obj.produto.nome, obj.fornecedor.nome)
 
 
 class FormularioLote(forms.ModelForm):
-    catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all())
-    fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
+    produto_fornecedor = ProdutoFornecedorModelChoiceField(queryset=ProdutoFornecedor.objects.all())
 
     class Meta:
         model = Lote
-        # fields = ['quantidade']
         fields = '__all__'
-        # exclude = ('data',)

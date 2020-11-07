@@ -20,21 +20,26 @@ class Catalogo(models.Model):
     preco = models.OneToOneField(Preco, on_delete=models.SET_NULL, null=True)
     descricao = models.TextField()
 
+    def __str__(self):
+        return self.nome
+
 
 class Fornecedor(models.Model):
     nome = models.CharField(max_length=255)
     cnpj = models.CharField(max_length=255)
     catalogo = models.ManyToManyField(Catalogo, through='ProdutoFornecedor', through_fields=('produto', 'fornecedor'),
-                                      blank=True, null=True)
+                                      blank=True)
+
+    def __str__(self):
+        return self.nome
 
 
 class ProdutoFornecedor(models.Model):
-    produto = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
     fornecedor = models.ForeignKey(Catalogo, on_delete=models.CASCADE)
+    produto = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
 
 
 class Lote(models.Model):
     data = models.DateTimeField(auto_now_add=True)
     quantidade = models.IntegerField()
-    fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE, related_name='fornecedores')
-    catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE, related_name='catalogo')
+    produto_fornecedor = models.ForeignKey(ProdutoFornecedor, on_delete=models.CASCADE)

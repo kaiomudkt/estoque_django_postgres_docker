@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
-from .forms import CatalogoForm, PrecoCreateForm, FormularioFornecedor, UsuarioForm, FormularioLote
+from .forms import CatalogoForm, PrecoCreateForm, FormularioFornecedor, UsuarioForm, FormularioLote, ProdutoFornecedor
 from .models import Catalogo, Preco, Fornecedor, Perfil, Lote
 
 
@@ -172,6 +172,7 @@ class UsuarioCreate(CreateView):
         Perfil.objects.create(usuario=self.object)
         return url
 
+
 class PerfilUpdate(UpdateView):
     template_name = "formulario.html"
     model = Perfil
@@ -187,6 +188,7 @@ class PerfilUpdate(UpdateView):
         context["titulo"] = "Meus dados pessoais"
         context["botao"] = "Atualizar"
         return context
+
 
 # LOTE
 class LoteListar(LoginRequiredMixin, ListView):
@@ -227,6 +229,10 @@ class LoteCadastrar(LoginRequiredMixin, CreateView):
         context['botao'] = "Cadastrar Lote"
         context['icone'] = '<i class="fa fa-check" aria-hidden="true"></i>'
         return context
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(ProdutoFornecedor, pk=self.kwargs['id'])
+        return self.object
 
 
 class LoteDeletar(LoginRequiredMixin, DeleteView):

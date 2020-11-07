@@ -58,7 +58,7 @@ class UsuarioForm(UserCreationForm):
         return e
 
 
-class ProdutoFornecedorModelChoiceField(ModelMultipleChoiceField):
+class ProdutoFornecedorModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
         return "Produto: %s | Fornecedor: %s" % (obj.produto.nome, obj.fornecedor.nome)
 

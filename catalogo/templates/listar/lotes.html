@@ -11,12 +11,15 @@
                 <th>ID</th>
                 <th>Quantidade</th>
                 <th>Produto</th>
+                <th>Fornecedor</th>
+                <th>Editar/Excluir</th>
             </tr>
             {% for lote in object_list %}
             <tr>
                 <td>{{ lote.id }}</td>
                 <td>{{ lote.quantidade }}</td>
-                <td>{{ lote.produto.nome }}</td>
+                <td>{{ lote.produto_fornecedor.produto.nome }}</td>
+                <td>{{ lote.produto_fornecedor.fornecedor.nome }}</td>
                 <td>
                     <a href="{% url 'atualiza_lote' lote.id %}" class="btn btn-warning btn-sm" title="Editar">
                         <i class="fa fa-pencil" aria-hidden="true"></i>

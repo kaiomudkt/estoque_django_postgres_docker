@@ -2,9 +2,12 @@
 
 {% block conteudo %}
 <main class="container">
-    <a href="{% url 'cadastra_produto' %}" class="btn btn-info btn-sm" title="novo">
-        Novo produto
-    </a>
+    <div class="mx-auto m-3">
+        
+        <a href="{% url 'cadastra_produto' %}" class="btn btn-info btn-sm mx-auto" title="novo">
+            Novo produto
+        </a>
+    </div>
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>

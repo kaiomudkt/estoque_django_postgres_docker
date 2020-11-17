@@ -83,7 +83,7 @@ para arrumar isso, execute o comando fora do container
 
 depois de mexer na model
 -python manage.py makemigrations
--python manage.py migrate
+-
 
 para entregar na tela é necessario estar logado, para criar um super usuario use o comando
 python manage.py createsuperuser

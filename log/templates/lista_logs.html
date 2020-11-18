@@ -14,7 +14,7 @@
 </div>
 <ul>
     {% for log in logs %}
-    <a href="{% url 'atualiza_produto' produto.id %}">
+{#    <a href="{% url 'atualiza_produto' produto.id %}">#}
         <li> {{ log.id_usuario }}, {{ log.id_tabela }}, {{ log.tupla }}, {{ log.metodo }}, {{ log.data }}</li>
     </a>
     {% endfor %}

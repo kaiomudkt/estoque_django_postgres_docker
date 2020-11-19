@@ -34,3 +34,20 @@ CREATE TRIGGER log_fornecedor
 BEFORE UPDATE or INSERT or DELETE ON catalogo_fornecedor
 FOR EACH ROW EXECUTE PROCEDURE logFornecedor();
 
+-- LOTE
+CREATE OR REPLACE FUNCTION logLote() RETURNS TRIGGER AS $$
+	BEGIN
+        INSERT INTO log_loglote (a_id_tupla, n_id_tupla, metodo, data, a_data_lote, n_data_lote, a_quantidade, n_quantidade, a_produto_fornecedor_id, n_produto_fornecedor_id)
+            values (OLD.id, NEW.id, TG_OP, CURRENT_TIMESTAMP, OLD.data, new.data, OLD.quantidade, NEW.quantidade, OLD.produto_fornecedor_id, NEW.produto_fornecedor_id);
+        IF (TG_OP = 'DELETE') then
+            RETURN OLD;
+        ELSE
+            RETURN NEW;
+        END IF;
+	END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER log_lote
+BEFORE UPDATE or INSERT or DELETE ON catalogo_lote
+FOR EACH ROW EXECUTE PROCEDURE logLote();
+

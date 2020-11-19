@@ -51,3 +51,20 @@ CREATE TRIGGER log_lote
 BEFORE UPDATE or INSERT or DELETE ON catalogo_lote
 FOR EACH ROW EXECUTE PROCEDURE logLote();
 
+-- PRECO
+CREATE OR REPLACE FUNCTION logPreco() RETURNS TRIGGER AS $$
+	BEGIN
+        INSERT INTO log_logpreco (a_id_tupla, n_id_tupla, metodo, data, a_real, n_real, a_dolar, n_dolar)
+            values (OLD.id, NEW.id, TG_OP, CURRENT_TIMESTAMP, OLD.real, new.real, OLD.dolar, NEW.dolar);
+        IF (TG_OP = 'DELETE') then
+            RETURN OLD;
+        ELSE
+            RETURN NEW;
+        END IF;
+	END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER log_preco
+BEFORE UPDATE or INSERT or DELETE ON catalogo_preco
+FOR EACH ROW EXECUTE PROCEDURE logPreco();
+

@@ -112,5 +112,38 @@
 </table>
 
 <br>
+<h2>logs Preco</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id do log</th>
+        <th>a_id_tupla</th>
+        <th>n_id_tupla</th>
+        <th>Metodo</th>
+        <th>Data</th>
+        <th>a_real</th>
+        <th>n_real</th>
+        <th>a_dolar</th>
+        <th>n_dolar</th>
+    </tr>
+    {% for log in logs_preco %}
+    <tr>
+        <td>{{ log.id }}</td>
+        <td>{{ log.a_id_tupla }}</td>
+        <td>{{ log.n_id_tupla }}</td>
+        <td>{{ log.metodo }}</td>
+        <td>{{ log.data }}</td>
+        <td>{{ log.a_real }}</td>
+        <td>{{ log.n_real }}</td>
+        <td>{{ log.a_dolar }}</td>
+        <td>{{ log.n_dolar }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">Nenhum log registrado do preco.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
 {% endblock %}
 

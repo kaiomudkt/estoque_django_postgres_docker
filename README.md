@@ -20,6 +20,13 @@ Desenvolvedores:
                 - Kaio Lino
                 - Rafael Junio
                 - Luiz 
-
-
+                
+                
+Instruções para uso
+instale o docker
+instale o docker-compose
+execute o 'docker-compose up --build' do projeto
+Não esqueça de inserir manualmente a trigger diretamente no postgres
+psql -U postgres
+\c postgres
 

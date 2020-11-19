@@ -1,23 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
+{% extends 'modelo.html' %}
+{% block conteudo %}
 <div>
     Lista logs, se tiver id é de um user, se nao todos os logs
 </div>
-<ul>
+
+<table class="table table-striped">
+    <tr>
+        <th>Tabela</th>
+        <th>id_tupla</th>
+        <th>Metodo</th>
+        <th>Data</th>
+    </tr>
     {% for log in logs %}
-{#    <a href="{% url 'atualiza_produto' produto.id %}">#}
-        <li> {{ log.id_usuario }}, {{ log.id_tabela }}, {{ log.tupla }}, {{ log.metodo }}, {{ log.data }}</li>
-    </a>
+    <tr>
+        <td>{{ log.id_tabela }}</td>
+        <td>{{ log.id_tupla }}</td>
+        <td>{{ log.metodo }}</td>
+        <td>{{ log.data }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">Nenhum log registrado.</td>
+    </tr>
     {% endfor %}
-</ul>
-</body>
-</html>
+
+</table>
+{% endblock %}

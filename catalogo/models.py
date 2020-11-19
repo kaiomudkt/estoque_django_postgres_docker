@@ -16,7 +16,7 @@ class Preco(models.Model):
 
 class Catalogo(models.Model):
     nome = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True)
+    # slug = models.SlugField(max_length=255, unique=True)
     preco = models.OneToOneField(Preco, on_delete=models.SET_NULL, null=True)
     descricao = models.TextField()
 

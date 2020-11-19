@@ -64,29 +64,29 @@ runserver - roda o servidor local do projeto Django.
 ############################################################################################################
 
 comando docker para abrir o terminal do container, que o projeto esta dentro
-# docker exec -i -t id-container /bin/bash
+    docker exec -i -t id-container /bin/bash
 
 comandos django:
 
 cria projeto django
--django-admin startproject meuprojeto
+    django-admin startproject meuprojeto
 
 executa servidor
--python manage.py runserver
+    python manage.py runserver
 
 cria app, que é um diretório que contem seus arquivos, models.py, views.py, urls.py e outros
--python manage.py startapp novoApp
+    python manage.py startapp novoApp
 
 depois de criar o app, se tiver dentro do docker, os diretorio e o arquivos criados vão estar com grupo ROOT
 para arrumar isso, execute o comando fora do container
-#sudo chown -R $USER:$USER .
+    sudo chown -R $USER:$USER .
 
 depois de mexer na model
--python manage.py makemigrations
+    python manage.py makemigrations
 -
 
 para entregar na tela é necessario estar logado, para criar um super usuario use o comando
-python manage.py createsuperuser
+    python manage.py createsuperuser
 
-sudo find . -path "*/migrations/*.pyc"  -delete
-find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+    sudo find . -path "*/migrations/*.pyc"  -delete
+    find . -path "*/migrations/*.py" -not -name "__init__.py" -delete

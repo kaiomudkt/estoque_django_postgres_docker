@@ -88,5 +88,14 @@ depois de mexer na model
 para entregar na tela é necessario estar logado, para criar um super usuario use o comando
     python manage.py createsuperuser
 
+exclui arquivos das migrations
     sudo find . -path "*/migrations/*.pyc"  -delete
     find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+
+para inserir a trigger diretamente no postgres
+lembre q o postgres esta dentro do container, entao primeiro entre nele, e depois:
+    psql -U postgres
+    \c postgres
+
+em comando em psql, Para listar as tabelas no banco de dados atual, você pode executar:
+    \dt

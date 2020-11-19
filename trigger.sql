@@ -68,3 +68,20 @@ CREATE TRIGGER log_preco
 BEFORE UPDATE or INSERT or DELETE ON catalogo_preco
 FOR EACH ROW EXECUTE PROCEDURE logPreco();
 
+-- PRODUTOFORNECEDOR
+CREATE OR REPLACE FUNCTION logProdutoFornecedor() RETURNS TRIGGER AS $$
+	BEGIN
+        INSERT INTO log_logprodutofornecedor (a_id_tupla, n_id_tupla, metodo, data, a_fornecedor_id, n_fornecedor_id, a_produto_id, n_produto_id)
+            values (OLD.id, NEW.id, TG_OP, CURRENT_TIMESTAMP, OLD.fornecedor_id, new.fornecedor_id, OLD.produto_id, NEW.produto_id);
+        IF (TG_OP = 'DELETE') then
+            RETURN OLD;
+        ELSE
+            RETURN NEW;
+        END IF;
+	END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER log_produto_fornecedor
+BEFORE UPDATE or INSERT or DELETE ON catalogo_produtofornecedor
+FOR EACH ROW EXECUTE PROCEDURE logProdutoFornecedor();
+

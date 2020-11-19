@@ -145,5 +145,38 @@
 </table>
 
 <br>
+
+<h2>logs Produto_Fornecedor</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id do log</th>
+        <th>a_id_tupla</th>
+        <th>n_id_tupla</th>
+        <th>Metodo</th>
+        <th>Data</th>
+        <th>a_fornecedor_id</th>
+        <th>n_fornecedor_id</th>
+        <th>a_produto_id</th>
+        <th>n_produto_id</th>
+    </tr>
+    {% for log in logs_produto_fornecedor %}
+    <tr>
+        <td>{{ log.id }}</td>
+        <td>{{ log.a_id_tupla }}</td>
+        <td>{{ log.n_id_tupla }}</td>
+        <td>{{ log.metodo }}</td>
+        <td>{{ log.data }}</td>
+        <td>{{ log.a_real }}</td>
+        <td>{{ log.a_fornecedor_id }}</td>
+        <td>{{ log.a_produto_id }}</td>
+        <td>{{ log.n_produto_id }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">Nenhum log registrado do produto_fornecedor.</td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}
 

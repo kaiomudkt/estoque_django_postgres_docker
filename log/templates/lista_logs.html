@@ -3,26 +3,73 @@
 <div>
     Lista logs, se tiver id é de um user, se nao todos os logs
 </div>
-
+<br>
+<h2>logs fornecedor</h2>
 <table class="table table-striped">
     <tr>
-        <th>Tabela</th>
-        <th>id_tupla</th>
+        <th>id do log</th>
+        <th>a_id_tupla</th>
+        <th>n_id_tupla</th>
         <th>Metodo</th>
         <th>Data</th>
+        <th>a_nome</th>
+        <th>n_nome</th>
+        <th>a_cnpj</th>
+        <th>n_cnpj</th>
     </tr>
-    {% for log in logs %}
+    {% for log in logs_fornecedor %}
     <tr>
-        <td>{{ log.id_tabela }}</td>
-        <td>{{ log.id_tupla }}</td>
+        <td>{{ log.id }}</td>
+        <td>{{ log.a_id_tupla }}</td>
+        <td>{{ log.n_id_tupla }}</td>
         <td>{{ log.metodo }}</td>
         <td>{{ log.data }}</td>
+        <td>{{ log.a_nome }}</td>
+        <td>{{ log.n_nome }}</td>
+        <td>{{ log.a_cnpj }}</td>
+        <td>{{ log.n_cnpj }}</td>
     </tr>
     {% empty %}
     <tr>
-        <td colspan="3">Nenhum log registrado.</td>
+        <td colspan="3">Nenhum log registrado do fornecedor.</td>
     </tr>
     {% endfor %}
+</table>
 
+<br>
+<h2>logs produtos catalogados</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id do log</th>
+        <th>a_id_tupla</th>
+        <th>n_id_tupla</th>
+        <th>Metodo</th>
+        <th>Data</th>
+        <th>a_nome</th>
+        <th>n_nome</th>
+        <th>a_descricao</th>
+        <th>n_descricao</th>
+        <th>a_preco_id</th>
+        <th>n_preco_id</th>
+    </tr>
+    {% for log in logs_catalogos %}
+    <tr>
+        <td>{{ log.id }}</td>
+        <td>{{ log.a_id_tupla }}</td>
+        <td>{{ log.n_id_tupla }}</td>
+        <td>{{ log.metodo }}</td>
+        <td>{{ log.data }}</td>
+        <td>{{ log.a_nome }}</td>
+        <td>{{ log.n_nome }}</td>
+        <td>{{ log.a_descricao }}</td>
+        <td>{{ log.n_descricao }}</td>
+        <td>{{ log.a_preco_id }}</td>
+        <td>{{ log.n_preco_id }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">Nenhum log registrado de produtos catalogados.</td>
+    </tr>
+    {% endfor %}
 </table>
 {% endblock %}

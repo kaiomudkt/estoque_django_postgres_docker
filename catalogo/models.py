@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import signals
 
 
 class Perfil(models.Model):
@@ -43,3 +44,13 @@ class Lote(models.Model):
     data = models.DateTimeField(auto_now_add=True)
     quantidade = models.IntegerField()
     produto_fornecedor = models.ForeignKey(ProdutoFornecedor, on_delete=models.CASCADE)
+
+
+def update_fornecedor(sender, instance, created, **kwargs):
+    post_info = getattr(instance, '_catalogo', None)
+    if post_info is not None:
+        fornecedor_instance = Fornecedor.objects.filter(id=post_info['fornecedor']).first()
+        fornecedor_instance.catalogo.add(instance)
+
+
+signals.post_save.connect(receiver=update_fornecedor, sender=Catalogo)

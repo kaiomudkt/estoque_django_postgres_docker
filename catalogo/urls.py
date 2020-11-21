@@ -21,12 +21,12 @@ urlpatterns = [
     path('catalogo/deletar<int:id>/', CatalogoDeletar.as_view(), name='deletar_produto'),
 
     path('fornecedores/', FornecedorListar.as_view(), name='lista_fornecedores'),
-    path('fornecedor/cadastrar', FornecedorCadastrar.as_view(), name='cadastra_fornecedor'),
-    path('fornecedor/atualizar<int:id>/', FornecedorAtualizar.as_view(), name='atualiza_fornecedor'),
-    path('fornecedor/deletar<int:id>/', FornecedorDeletar.as_view(), name='deletar_fornecedor'),
+    path('fornecedores/cadastrar', FornecedorCadastrar.as_view(), name='cadastra_fornecedor'),
+    path('fornecedores/atualizar<int:id>/', FornecedorAtualizar.as_view(), name='atualiza_fornecedor'),
+    path('fornecedores/deletar<int:id>/', FornecedorDeletar.as_view(), name='deletar_fornecedor'),
 
     path('lotes/', LoteListar.as_view(), name='lista_lotes'),
-    path('lote/cadastrar', LoteCadastrar.as_view(), name='cadastra_lote'),
-    path('lote/atualizar<int:id>/', LoteAtualizar.as_view(), name='atualiza_lote'),
-    path('lote/deletar<int:id>/', LoteDeletar.as_view(), name='deletar_lote'),
+    path('lotes/cadastrar', LoteCadastrar.as_view(), name='cadastra_lote'),
+    path('lotes/atualizar<int:id>/', LoteAtualizar.as_view(), name='atualiza_lote'),
+    path('lotes/deletar<int:id>/', LoteDeletar.as_view(), name='deletar_lote'),
 ]

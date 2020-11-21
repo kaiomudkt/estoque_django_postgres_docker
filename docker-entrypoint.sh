@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Aguardando banco de dados terminar a inicializacao"
+sleep 3
+
 echo "Making migrations"
 python manage.py makemigrations
 
@@ -15,4 +18,3 @@ cat trigger.sql | python manage.py dbshell
 
 echo "Running server!"
 python manage.py runserver 0.0.0.0:8080
-

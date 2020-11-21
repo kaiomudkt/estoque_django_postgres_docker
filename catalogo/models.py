@@ -47,10 +47,27 @@ class Lote(models.Model):
 
 
 def update_fornecedor(sender, instance, created, **kwargs):
-    post_info = getattr(instance, '_catalogo', None)
-    if post_info is not None:
-        for fornecedor in post_info:
-            fornecedor.catalogo.add(instance)
+    fornecedores_info = getattr(instance, '_catalogo', None)
+    if fornecedores_info is not None:
+        fornecedor_salvos = []
+        produto_fornecedor = ProdutoFornecedor.objects.filter(produto__catalogo=instance)
+        for fornecedor in produto_fornecedor:
+            if fornecedor.fornecedor == instance:
+                fornecedor_salvos.append(fornecedor.produto)
+        if fornecedor_salvos:
+            for fornecedor in fornecedores_info:
+                if fornecedor not in fornecedor_salvos:
+                    fornecedor.catalogo.add(instance)
+            for fornecedor in fornecedor_salvos:
+                if fornecedor not in fornecedores_info:
+                    prod_del = ProdutoFornecedor.objects.filter(fornecedor__fornecedor__exact=fornecedor)
+                    for prod in prod_del:
+                        if prod.produto == fornecedor and prod.fornecedor == instance:
+                            prod.delete()
+        else:
+            for fornecedor in fornecedores_info:
+                if fornecedor not in produto_fornecedor:
+                    fornecedor.catalogo.add(instance)
 
 
 signals.post_save.connect(receiver=update_fornecedor, sender=Catalogo)

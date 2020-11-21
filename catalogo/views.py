@@ -41,7 +41,7 @@ class CatalogoCadastrar(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         context = super(CatalogoCadastrar, self).get_context_data(**kwargs)
         context['preco_form'] = self.second_form_class
         # context = super().get_context_data(*args, **kwargs)
-        context['botao'] = "Cadastrar"
+        context['botao'] = "Cadastrar Catalogo"
         context['titulo'] = "Cadastro novo produto no catalogo"
         context['icone'] = '<i class="fa fa-check" aria-hidden="true"></i>'
         return context
@@ -54,10 +54,10 @@ class CatalogoCadastrar(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             # produto.preco_id = preco.id
             produto.preco = preco
             produto._catalogo = form.cleaned_data['fornecedor']
-            produto.save()
-        form.instance.usuario = self.request.user
-        url = super().form_valid(form)
-        return url
+            # produto.save()
+            form.instance.usuario = self.request.user
+            url = super().form_valid(form)
+            return url
         # return HttpResponseRedirect(self.get_success_url())
 
 
@@ -88,6 +88,7 @@ class CatalogoAtualizar(LoginRequiredMixin, UpdateView):
             preco = preco_form.save()
             produto = form.save(commit=False)
             produto.preco = preco
+            produto._catalogo = form.cleaned_data['fornecedor']
             produto.save()
             return HttpResponseRedirect(self.get_success_url())
 

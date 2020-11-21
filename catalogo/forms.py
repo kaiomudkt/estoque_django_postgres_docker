@@ -32,11 +32,12 @@ class PrecoCreateForm(forms.ModelForm):
 # FORNECEDOR
 class CatalogoModelChoiceField(ModelMultipleChoiceField):
     def label_from_instance(self, obj):
-        return "%s| %s" % (obj.id, obj.nome)
+        return "ID: %s | Produto: %s" % (obj.id, obj.nome)
 
 
 class FormularioFornecedor(forms.ModelForm):
-    catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all(), required=False)
+    catalogo = CatalogoModelChoiceField(queryset=Catalogo.objects.all(), required=False,
+                                        widget=forms.CheckboxSelectMultiple)
 
     class Meta:
         model = Fornecedor
@@ -61,7 +62,7 @@ class UsuarioForm(UserCreationForm):
 
 class ProdutoFornecedorModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
-        return "Produto: %s | Fornecedor: %s" % (obj.produto.nome, obj.fornecedor.nome)
+        return "Produto: %s | Fornecedor: %s" % (obj.fornecedor.nome, obj.produto.nome)
 
 
 class FormularioLote(forms.ModelForm):

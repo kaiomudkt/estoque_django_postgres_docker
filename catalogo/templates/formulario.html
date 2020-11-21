@@ -1,4 +1,7 @@
-<!doctype html>
+{% extends 'modelo.html' %}
+
+{% block conteudo %}
+
 {% load crispy_forms_tags %}
 <html lang="en">
 <head>
@@ -13,17 +16,20 @@
 </head>
 <body>
 <div class="container">
-    <form method="POST">
-        {% csrf_token %}
-        {{ preco_form|crispy }}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-info btn-sm" title="Cadastrar">
-            {% autoescape off %}
-            {{ icone }}
-            {% endautoescape %}
-            {{ botao }}
-        </button>
-    </form>
+    <div class="mx-auto m-3">
+        <form method="POST">
+            {% csrf_token %}
+            {{ preco_form|crispy }}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-info btn-sm" title="Cadastrar">
+                {% autoescape off %}
+                {{ icone }}
+                {% endautoescape %}
+                {{ botao }}
+            </button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
+{% endblock %}

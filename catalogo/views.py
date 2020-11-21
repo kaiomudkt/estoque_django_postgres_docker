@@ -53,7 +53,7 @@ class CatalogoCadastrar(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             produto = form.save(commit=False)
             # produto.preco_id = preco.id
             produto.preco = preco
-            produto._catalogo = self.request.POST
+            produto._catalogo = form.cleaned_data['fornecedor']
             produto.save()
         form.instance.usuario = self.request.user
         url = super().form_valid(form)

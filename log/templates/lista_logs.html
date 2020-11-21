@@ -1,8 +1,5 @@
 {% extends 'modelo.html' %}
 {% block conteudo %}
-<div>
-    Lista logs, se tiver id é de um user, se nao todos os logs
-</div>
 <br>
 <h2>logs fornecedor</h2>
 <table class="table table-striped">
@@ -12,10 +9,10 @@
         <th>n_id_tupla</th>
         <th>Metodo</th>
         <th>Data</th>
-        <th>a_nome</th>
-        <th>n_nome</th>
-        <th>a_cnpj</th>
-        <th>n_cnpj</th>
+        <th>Nome antigo</th>
+        <th>Nome novo</th>
+        <th>CNPJ antigo</th>
+        <th>CNPJ novo</th>
     </tr>
     {% for log in logs_fornecedor %}
     <tr>
@@ -45,12 +42,12 @@
         <th>n_id_tupla</th>
         <th>Metodo</th>
         <th>Data</th>
-        <th>a_nome</th>
-        <th>n_nome</th>
-        <th>a_descricao</th>
-        <th>n_descricao</th>
-        <th>a_preco_id</th>
-        <th>n_preco_id</th>
+        <th>Nome antigo</th>
+        <th>Nome novo</th>
+        <th>descricao antiga</th>
+        <th>descricao nova</th>
+        <th>preco_id antigo</th>
+        <th>preco_id novo</th>
     </tr>
     {% for log in logs_catalogos %}
     <tr>

@@ -5,6 +5,7 @@ from django.forms import ModelMultipleChoiceField
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.forms import ModelChoiceField
+from django import forms
 
 
 # CATALOGO / PRODUTO
@@ -14,7 +15,7 @@ class FornecedorModelChoiceField(ModelMultipleChoiceField):
 
 
 class CatalogoForm(forms.ModelForm):
-    fornecedor = FornecedorModelChoiceField(queryset=Fornecedor.objects.all())
+    fornecedor = ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple, queryset=Fornecedor.objects.all())
 
     class Meta:
         model = Catalogo
